@@ -54,6 +54,10 @@ export default {
   },
   methods: {
     change() {
+      if (this.exportData === '') {
+        alert('请输入要转换的数据');
+        return;
+      }
       let inpData = this.exportData.split('订单详情发货修改收货地址\n');
       inpData.forEach((d) => {
         let arr = d.split(/\n/);

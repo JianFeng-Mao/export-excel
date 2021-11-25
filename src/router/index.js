@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/export-excel',
     name: 'Home',
     component: Home,
   },
