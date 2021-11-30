@@ -74,7 +74,13 @@ export default {
         alert('请输入要转换的数据');
         return;
       }
-      let inpData = this.exportData.split('订单详情发货修改收货地址\n');
+      let inpData = this.exportData.split('\n订单号');
+      inpData = inpData.map((item, index) => {
+        if (index > 0) {
+          return (item = '订单号' + item);
+        }
+        return item;
+      });
       inpData.forEach((d) => {
         let arr = d.split(/\n/);
         // key：value形式的值
@@ -111,9 +117,11 @@ export default {
             keyObj.userId = tempArr[1];
           }
         });
+        if (arr2[4] !== '极速退') {
+          arr2.splice(4, 0, '极速退');
+        }
         // 处理普通文字字符串， 必须按顺序输入
         let tempArr2 = arr2[14] ? arr2[14].split('，') : [];
-
         // 区分规格和数量，找到显示数量的下标，进行截取
         let normsNumReg = /\x(\d)+/;
         let normsNumIndex = arr2[1] && arr2[1].search(normsNumReg);
