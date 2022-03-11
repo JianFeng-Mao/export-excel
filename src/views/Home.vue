@@ -163,7 +163,6 @@ export default {
           地址: obj.address,
         };
       });
-      console.log(XLSX);
       var sheet1 = XLSX.utils.json_to_sheet(sheet1Data);
       sheet1['!cols'] = [];
       for (const key in sheet1Data[0]) {
