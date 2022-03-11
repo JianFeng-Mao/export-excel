@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import XLSX from 'xlsx';
+import * as XLSX from 'xlsx';
 export default {
   name: 'Home',
   data() {
@@ -59,7 +59,7 @@ export default {
         alert('请输入要转换的数据');
         return;
       }
-      let arr1 = this.exportData.split('订单号');
+      let arr1 = this.exportData.split('订单编号');
 
       let arr2 = arr1.map((item) => {
         return item.split(/\n/);
@@ -163,6 +163,7 @@ export default {
           地址: obj.address,
         };
       });
+      console.log(XLSX);
       var sheet1 = XLSX.utils.json_to_sheet(sheet1Data);
       sheet1['!cols'] = [];
       for (const key in sheet1Data[0]) {
